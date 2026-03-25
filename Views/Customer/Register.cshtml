@@ -1,0 +1,114 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@model Customer
+ 
+<div class="container py-5">
+    <div class="card shadow-sm mx-auto" style="max-width: 700px; border: none; border-radius: 10px; overflow: hidden;">
+        <div class="text-center py-4" style="background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%); color: white;">
+            <p class="mb-0">Customer Registration Form</p>
+        </div>
+ 
+        <div class="card-body p-4">
+            @using (Html.BeginForm("Register", "Customer", FormMethod.Post))
+            {
+                <div class="mb-4">
+                    <h6 class="text-primary mb-3"><i class="bi bi-person-fill me-2 text-primary bg-light p-1 rounded"></i> Personal Information</h6>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">First Name *</label>
+                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Enter first name" })
+                            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger small" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Last Name *</label>
+                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Enter last name" })
+                            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger small" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Date of Birth *</label>
+                            @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", type = "date" })
+                            @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger small" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Gender *</label>
+                            @Html.DropDownListFor(m => m.GenderType, Html.GetEnumSelectList<GenderType>(), "Select gender", new { @class = "form-select" })
+                            @Html.ValidationMessageFor(m => m.GenderType, "", new { @class = "text-danger small" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Marital Status *</label>
+                            @Html.DropDownListFor(m => m.MaritalStatus, Html.GetEnumSelectList<MaritalStatus>(), "Select marital status", new { @class = "form-select" })
+                            @Html.ValidationMessageFor(m => m.MaritalStatus, "", new { @class = "text-danger small" })
+                        </div>
+                    </div>
+                </div>
+ 
+                <hr class="text-muted opacity-25">
+ 
+                <div class="mb-4">
+                    <h6 class="text-success mb-3"><i class="bi bi-envelope-fill me-2 text-success bg-light p-1 rounded"></i> Contact Information</h6>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Email Address *</label>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "example@email.com" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger small" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Phone Number *</label>
+                            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", placeholder = "9876543210" })
+                            @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger small" })
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label small fw-bold">Address *</label>
+                            @Html.TextAreaFor(m => m.Address, new { @class = "form-control", rows = "3", placeholder = "Enter your complete address" })
+                            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger small" })
+                        </div>
+                    </div>
+                </div>
+ 
+                <hr class="text-muted opacity-25">
+ 
+                <div class="mb-4">
+                    <h6 class="text-info mb-3"><i class="bi bi-person-vcard-fill me-2 text-info bg-light p-1 rounded"></i> Identity Documents</h6>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">PAN Number *</label>
+                            @Html.TextBoxFor(m => m.PanNumber, new { @class = "form-control", placeholder = "ABCDE1234F" })
+                            @Html.ValidationMessageFor(m => m.PanNumber, "", new { @class = "text-danger small" })
+                            <div class="form-text x-small" style="font-size: 0.7rem;">Format: 5 letters, 4 digits, 1 letter</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Aadhar Number *</label>
+                            @Html.TextBoxFor(m => m.AadharNumber, new { @class = "form-control", placeholder = "123456789012" })
+                            @Html.ValidationMessageFor(m => m.AadharNumber, "", new { @class = "text-danger small" })
+                            <div class="form-text x-small" style="font-size: 0.7rem;">12-digit Aadhar number</div>
+                        </div>
+                    </div>
+                </div>
+ 
+                <hr class="text-muted opacity-25">
+ 
+                <div class="mb-4">
+                    <h6 style="color: #f39c12;"><i class="bi bi-briefcase-fill me-2 bg-light p-1 rounded" style="color: #f39c12;"></i> Employment & Financial Information</h6>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Employment Type *</label>
+                            @Html.DropDownListFor(m => m.EmployementType, Html.GetEnumSelectList<EmployementType>(), "Select employment type", new { @class = "form-select" })
+                            @Html.ValidationMessageFor(m => m.EmployementType, "", new { @class = "text-danger small" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Annual Income (₹) *</label>
+                            @Html.TextBoxFor(m => m.AnnualIncome, new { @class = "form-control", placeholder = "500000" })
+                            @Html.ValidationMessageFor(m => m.AnnualIncome, "", new { @class = "text-danger small" })
+                        </div>
+                    </div>
+                </div>
+ 
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold mt-3" style="background-color: #3b5bdb; border: none;">Submit Information</button>
+            }
+        </div>
+    </div>
+</div>

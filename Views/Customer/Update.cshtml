@@ -1,0 +1,335 @@
+﻿
+@model Customer
+@{
+    ViewData["Title"] = "Update " + ViewBag.FieldToEdit;
+    string field = ViewBag.FieldToEdit as string;
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h1 class="display-6 mb-4">Update My Info</h1>
+
+<form asp-action="Update" method="post">
+    <input type="hidden" asp-for="CustomerId" value="@Model.CustomerId"/>
+    <input type="hidden" name="fieldName" value="@field" />
+
+    <table class="table table-hover border align-middle">
+        <tbody>
+            @* --- FIRST NAME ROW --- *@
+            <tr>
+                <th class="bg-light" style="width: 30%;">First Name</th>
+                <td>
+                    @if (field == "FirstName")
+                    {
+                        <input asp-for="FirstName" class="form-control"  autofocus />
+                        <span asp-validation-for="FirstName" class="text-danger small"></span>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="FirstName" />
+                        @Model.FirstName
+                    }
+                </td>
+                <td class="text-end">
+                    @if (field == "FirstName")
+                    {
+                        <button type="submit" class="btn btn-link text-success p-0 me-2"><i class="bi bi-floppy fs-5"></i></button>
+                        <a asp-action="Profile" class="text-secondary"><i class="bi bi-x-circle fs-5"></i></a>
+                    }
+                    else
+                    {
+                        <a asp-action="Update" asp-route-id="@Model.CustomerId" asp-route-field="FirstName" class="text-primary"><i class="bi bi-pencil-square"></i></a>
+                    }
+                </td>
+            </tr>
+
+            @* --- LAST NAME ROW --- *@
+            <tr>
+                <th class="bg-light">Last Name</th>
+                <td>
+                    @if (field == "LastName")
+                    {
+                        <input asp-for="LastName" class="form-control" autofocus />
+                        <span asp-validation-for="LastName" class="text-danger small"></span>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="LastName" />
+                        @Model.LastName
+                    }
+                </td>
+                <td class="text-end">
+                    @if (field == "LastName")
+                    {
+                        <button type="submit" class="btn btn-link text-success p-0 me-2"><i class="bi bi-floppy fs-5"></i></button>
+                        <a asp-action="Profile" class="text-secondary"><i class="bi bi-x-circle fs-5"></i></a>
+                    }
+                    else
+                    {
+                        <a asp-action="Update" asp-route-id="@Model.CustomerId" asp-route-field="LastName" class="text-primary"><i class="bi bi-pencil-square"></i></a>
+                    }
+                </td>
+            </tr>
+            @* Email *@
+            <tr>
+                <th class="bg-light" style="width: 30%;">Email</th>
+                <td> <input type="hidden" asp-for="Email"  />@Model.Email</td>
+            </tr>
+            @* DOB *@
+            <tr>
+                <th class="bg-light">DateOfBirth</th>
+                <td>
+                    @if (field == "DateOfBirth")
+                    {
+                        <input asp-for="DateOfBirth" class="form-control" autofocus />
+                        <span asp-validation-for="DateOfBirth" class="text-danger small"></span>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="DateOfBirth" />
+                        @Model.DateOfBirth.ToShortDateString()
+                    }
+                </td>
+                <td class="text-end">
+                    @if (field == "DateOfBirth")
+                    {
+                        <button type="submit" class="btn btn-link text-success p-0 me-2"><i class="bi bi-floppy fs-5"></i></button>
+                        <a asp-action="Profile" class="text-secondary"><i class="bi bi-x-circle fs-5"></i></a>
+                    }
+                    else
+                    {
+                        <a asp-action="Update" asp-route-id="@Model.CustomerId" asp-route-field="DateOfBirth" class="text-primary"><i class="bi bi-pencil-square"></i></a>
+                    }
+                </td>
+            </tr>
+            @* Aadhar *@
+            <tr>
+                <th class="bg-light">AadharNumber</th>
+                <td>
+                    @if (field == "AadharNumber")
+                    {
+                        <input asp-for="AadharNumber" class="form-control" autofocus />
+                        <span asp-validation-for="AadharNumber" class="text-danger small"></span>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="AadharNumber" />
+                        @Model.AadharNumber
+                    }
+                </td>
+                <td class="text-end">
+                    @if (field == "AadharNumber")
+                    {
+                        <button type="submit" class="btn btn-link text-success p-0 me-2"><i class="bi bi-floppy fs-5"></i></button>
+                        <a asp-action="Profile" class="text-secondary"><i class="bi bi-x-circle fs-5"></i></a>
+                    }
+                    else
+                    {
+                        <a asp-action="Update" asp-route-id="@Model.CustomerId" asp-route-field="AadharNumber" class="text-primary"><i class="bi bi-pencil-square"></i></a>
+                    }
+                </td>
+            </tr>
+            @* PanNumber *@
+            <tr>
+                <th class="bg-light">PanNumber</th>
+                <td>
+                    @if (field == "PanNumber")
+                    {
+                        <input asp-for="PanNumber" class="form-control" autofocus />
+                        <span asp-validation-for="PanNumber" class="text-danger small"></span>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="PanNumber" />
+                        @Model.PanNumber
+                    }
+                </td>
+                <td class="text-end">
+                    @if (field == "PanNumber")
+                    {
+                        <button type="submit" class="btn btn-link text-success p-0 me-2"><i class="bi bi-floppy fs-5"></i></button>
+                        <a asp-action="Profile" class="text-secondary"><i class="bi bi-x-circle fs-5"></i></a>
+                    }
+                    else
+                    {
+                        <a asp-action="Update" asp-route-id="@Model.CustomerId" asp-route-field="PanNumber" class="text-primary"><i class="bi bi-pencil-square"></i></a>
+                    }
+                </td>
+            </tr>
+            @* PhoneNumber *@
+            <tr>
+                <th class="bg-light">PhoneNumber</th>
+                <td>
+                    @if (field == "PhoneNumber")
+                    {
+                        <input asp-for="PhoneNumber" class="form-control" autofocus />
+                        <span asp-validation-for="PhoneNumber" class="text-danger small"></span>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="PhoneNumber" />
+                        @Model.PhoneNumber
+                    }
+                </td>
+                <td class="text-end">
+                    @if (field == "PhoneNumber")
+                    {
+                        <button type="submit" class="btn btn-link text-success p-0 me-2"><i class="bi bi-floppy fs-5"></i></button>
+                        <a asp-action="Profile" class="text-secondary"><i class="bi bi-x-circle fs-5"></i></a>
+                    }
+                    else
+                    {
+                        <a asp-action="Update" asp-route-id="@Model.CustomerId" asp-route-field="PhoneNumber" class="text-primary"><i class="bi bi-pencil-square"></i></a>
+                    }
+                </td>
+            </tr>
+            @* GenderType *@
+            <tr>
+                <th class="bg-light">GenderType</th>
+                <td>
+                    @if (field == "GenderType")
+                    {
+                        <select asp-for="GenderType"
+                                asp-items="Html.GetEnumSelectList<GenderType>()"
+                                class="form-select">
+           
+                        </select>
+                        <span asp-validation-for="GenderType" class="text-danger small"></span>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="GenderType" />
+                        @Model.GenderType
+                    }
+                </td>
+                <td class="text-end">
+                    @if (field == "GenderType")
+                    {
+                        <button type="submit" class="btn btn-link text-success p-0 me-2"><i class="bi bi-floppy fs-5"></i></button>
+                        <a asp-action="Profile" class="text-secondary"><i class="bi bi-x-circle fs-5"></i></a>
+                    }
+                    else
+                    {
+                        <a asp-action="Update" asp-route-id="@Model.CustomerId" asp-route-field="GenderType" class="text-primary"><i class="bi bi-pencil-square"></i></a>
+                    }
+                </td>
+            </tr>
+            @* MaritalStatus *@
+            <tr>
+                <th class="bg-light">MaritalStatus</th>
+                <td>
+                    @if (field == "MaritalStatus")
+                    {
+                        <select asp-for="MaritalStatus"
+                                asp-items="Html.GetEnumSelectList<MaritalStatus>()"
+                                class="form-select">
+                        </select>
+                        <span asp-validation-for="MaritalStatus" class="text-danger small"></span>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="MaritalStatus" />
+                        @Model.MaritalStatus
+                    }
+                </td>
+                <td class="text-end">
+                    @if (field == "MaritalStatus")
+                    {
+                        <button type="submit" class="btn btn-link text-success p-0 me-2"><i class="bi bi-floppy fs-5"></i></button>
+                        <a asp-action="Profile" class="text-secondary"><i class="bi bi-x-circle fs-5"></i></a>
+                    }
+                    else
+                    {
+                        <a asp-action="Update" asp-route-id="@Model.CustomerId" asp-route-field="MaritalStatus" class="text-primary"><i class="bi bi-pencil-square"></i></a>
+                    }
+                </td>
+            </tr>
+            @* EmployementType *@
+            <tr>
+                <th class="bg-light">EmployementType</th>
+                <td>
+                    @if (field == "EmployementType")
+                    {
+                        <select asp-for="EmployementType"
+                                asp-items="Html.GetEnumSelectList<EmployementType>()"
+                                class="form-select">
+                        </select>
+                        <span asp-validation-for="EmployementType" class="text-danger small"></span>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="EmployementType" />
+                        @Model.EmployementType
+                    }
+                </td>
+                <td class="text-end">
+                    @if (field == "EmployementType")
+                    {
+                        <button type="submit" class="btn btn-link text-success p-0 me-2"><i class="bi bi-floppy fs-5"></i></button>
+                        <a asp-action="Profile" class="text-secondary"><i class="bi bi-x-circle fs-5"></i></a>
+                    }
+                    else
+                    {
+                        <a asp-action="Update" asp-route-id="@Model.CustomerId" asp-route-field="EmployementType" class="text-primary"><i class="bi bi-pencil-square"></i></a>
+                    }
+                </td>
+            </tr>
+            @* Address *@
+            <tr>
+                <th class="bg-light">Address</th>
+                <td>
+                    @if (field == "Address")
+                    {
+                        <input asp-for="Address" class="form-control" autofocus />
+                        <span asp-validation-for="Address" class="text-danger small"></span>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="Address" />
+                        @Model.Address
+                    }
+                </td>
+                <td class="text-end">
+                    @if (field == "Address")
+                    {
+                        <button type="submit" class="btn btn-link text-success p-0 me-2"><i class="bi bi-floppy fs-5"></i></button>
+                        <a asp-action="Profile" class="text-secondary"><i class="bi bi-x-circle fs-5"></i></a>
+                    }
+                    else
+                    {
+                        <a asp-action="Update" asp-route-id="@Model.CustomerId" asp-route-field="Address" class="text-primary"><i class="bi bi-pencil-square"></i></a>
+                    }
+                </td>
+            </tr>
+            @* AnnualIncome *@
+            <tr>
+                <th class="bg-light">AnnualIncome</th>
+                <td>
+                    @if (field == "AnnualIncome")
+                    {
+                        <input asp-for="AnnualIncome" class="form-control" autofocus />
+                        <span asp-validation-for="AnnualIncome" class="text-danger small"></span>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="AnnualIncome" />
+                        @Model.AnnualIncome
+                    }
+                </td>
+                <td class="text-end">
+                    @if (field == "AnnualIncome")
+                    {
+                        <button type="submit" class="btn btn-link text-success p-0 me-2"><i class="bi bi-floppy fs-5"></i></button>
+                        <a asp-action="Profile" class="text-secondary"><i class="bi bi-x-circle fs-5"></i></a>
+                    }
+                    else
+                    {
+                        <a asp-action="Update" asp-route-id="@Model.CustomerId" asp-route-field="AnnualIncome" class="text-primary"><i class="bi bi-pencil-square"></i></a>
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+<div asp-validation-summary="ModelOnly"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">

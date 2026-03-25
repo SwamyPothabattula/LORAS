@@ -1,0 +1,44 @@
+﻿@{
+    Layout = "~/Views/Shared/_LoanLayout.cshtml";
+}
+@model List<LoanProduct>
+<a asp-action="AddProduct"  class="btn btn-primary">Add Product</a>
+
+@if(!Model.Any())
+{
+    <h1>No products</h1>
+}
+else
+{
+    <h1>Products</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product Id</th>
+                <th>Product Name</th>
+                <th>Interest Rate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (LoanProduct product in Model)
+            {
+                <tr>
+                    <td>@product.ProductId</td>
+                    <td>@product.ProductName</td>
+                    <td>@product.InterestRate</td>
+                    <td>
+                        <a asp-action="EditProduct" class="btn btn-warning" asp-route-id="@product.ProductId">Edit</a>
+                        <form asp-action="DeleteProduct" asp-route-id="@product.ProductId" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('Are you sure you want to delete this?');">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}

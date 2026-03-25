@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<form asp-action="Login" asp-controller="Login">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+ 
+                <h3 class="text-center mb-4">Login</h3>
+ 
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="Enter email" />
+                </div>
+ 
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Enter password" />
+                </div>
+ 
+                <div class="mb-3">
+                    <label class="form-label">Role</label>
+                    <select name="role" class="form-select">
+                        <option value="">Select Role</option>
+                        <option value="CUSTOMER">Customer</option>
+                        <option value="LOAN_OFFICER">Loan Officer</option>
+                        <option value="CREDIT_ANALYST">Credit Analyst</option>
+                        <option value="UNDERWRITTER">Underwriter</option>
+                        <option value="ADMIN">Admin</option>
+                    </select>
+                </div>
+ 
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+ 
+            </div>
+        </div>
+    </div>
+</form>
+<p style="color:red">@ViewBag.Error</p>

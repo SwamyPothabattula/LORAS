@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LorasApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark vh-100 p-0 position-fixed">
+                <div class="p-3">
+                    <h5 class="text-white">LorasApp</h5>
+                </div>
+                <div class="position-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            @Html.ActionLink("Home", "Index", "Customer", null, new { @class = "nav-link text-white-50 border-bottom border-secondary py-3" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("MyProfile", "Profile", "Customer", null, new { @class = "nav-link text-white-50 border-bottom border-secondary py-3" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Customer Register", "Register", "Customer", null, new { @class = "nav-link text-white-50 border-bottom border-secondary py-3" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("My Loan Applications", "LoanApplication", "Customer", null, new { @class = "nav-link text-white-50 border-bottom border-secondary py-3" })
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-3">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+</body>
+</html>

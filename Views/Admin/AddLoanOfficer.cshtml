@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Add Loan Officer</h1>
+<form asp-action="AddLoanOfficer" asp-controller="Admin" method="post">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+ 
+                <h3 class="text-center mb-4">Login</h3>
+ 
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="Enter email" />
+                </div>
+ 
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Enter password" />
+                </div>
+ 
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+ 
+            </div>
+        </div>
+    </div>
+</form>
